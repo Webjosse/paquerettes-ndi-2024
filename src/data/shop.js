@@ -1,4 +1,4 @@
-export default SHOPDATA = {
+const SHOPDATA = {
     'waste': {
         title: 'Amas de déchets',
         icon: '/logos/blood-vessel.png',
@@ -8,4 +8,6 @@ export default SHOPDATA = {
         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
     }
-}
+};
+
+export default SHOPDATA;

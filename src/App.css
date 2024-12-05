@@ -60,4 +60,25 @@ body{
 
 .shopSection{
   height: 50vh;
+  font-size: 5vw;
+}
+
+.shopSection ul{
+  padding: 0.5em;
+}
+
+
+.shopSection button{
+  background: var(--blue);
+  color: white;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+.shopSection button:not(:active){
+  transition: transform 0.1s ease-in-out;
+}
+
+.shopSection button:active{
+  transform: scale(0.9);
 }

@@ -1,0 +1,57 @@
+.shopSection table{
+    width: 100%;
+}
+
+.shopSection li{
+    background-color: var(--blue);
+    padding: 0.5em;
+    list-style: none;
+    width: calc(100% - 1em) !important;
+}
+
+.shopSection .shopFlex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+.shopSection img.keyIcon{
+    height: 3em;
+}
+
+.shopSection img.co2{
+    height: 1em;
+    margin: 0.1em;
+}
+
+.shopSection li > *{
+    margin: 0.5em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+.shopWrap{
+    flex-wrap: wrap;
+}
+
+.shopSection button{
+    position: relative;
+    margin-bottom: 1em;
+    outline: white !important;
+    border: solid 1px white;
+}
+
+.shopSection .shopTag{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 50%;
+    bottom: 0;
+    transform: translate(50%, 50%);
+    background-color: white;
+    color: var(--blue);
+    border: solid 1px var(--blue);
+    border-radius: 0.5em;
+}
