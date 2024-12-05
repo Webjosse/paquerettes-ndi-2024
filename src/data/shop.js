@@ -8,7 +8,7 @@ const SHOPDATA = {
     },
     'acidification': {
         title: 'Acidification des Océans',
-        icon: '/logos/acid.png',
+        icon: '/logos/acid.webp',
         co2PerSecond: 50,
         desc: `Augmentation du CO2 dans l'eau, nuisant aux coraux et aux coquillages`,
         basePrice: 5_000
@@ -36,7 +36,7 @@ const SHOPDATA = {
     },
     'invasion': {
         title: 'Invasion d\'espèces',
-        icon: '/logos/invasion.png',
+        icon: '/logos/invasion.webp',
         co2PerSecond: 1000_000,
         desc: `Introduction d'espèces non indigènes qui perturbent l'équilibre écologique.`,
         basePrice: BigInt('5_000_000_000_000')
