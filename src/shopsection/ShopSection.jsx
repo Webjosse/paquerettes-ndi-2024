@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import SHOPDATA from '../data/shop';
 
-export const ShopSection = ({addClick}) => {
+export const ShopSection = () => {
+    const [pollutions, setPollutions] = useState({
+        
+    })
+
+
     return (
-    <section className='shopSection' >
-    </section>);
+        <section className='shopSection' >
+
+        </section>
+    );
 
 }
