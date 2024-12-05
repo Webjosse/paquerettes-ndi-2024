@@ -22,6 +22,6 @@ function formatBigInt(bigIntValue) {
 
 
 export const Count = ({ count }) => {
-    return <p className='fontVw'>{formatBigInt(count)} molécules</p>
+    return <p className='fontVw'>{formatBigInt(count)} grammes</p>
   };
   
