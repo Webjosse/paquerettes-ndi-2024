@@ -5,7 +5,7 @@ import co2CloudImage from '../assets/co2-cloud.png';
 import './ShopSection.css';
 import { formatBigInt, formatNumber } from '../utils/format';
 
-export const ShopSection = ({count, setCount, showPopup}) => {
+export const ShopSection = ({count, setCount, showPopup, showMyInfo}) => {
     const [pollutions, setPollutions] = useState(JSON.parse(localStorage.getItem("pollution")) || Object.fromEntries(
         Object.entries(SHOPDATA).map(([k,v]) => ([k, {cps: v.co2PerSecond, unit: 0}]))
     ));
@@ -73,6 +73,7 @@ export const ShopSection = ({count, setCount, showPopup}) => {
         {allUnlocked ? '' : <li className='shopFlex shopWrap shopDis'>
                 <p>*Générez du CO2 pour débloquer cet élément</p>
             </li>}
+            <li onClick={showMyInfo}><u>Informations</u></li>
             </ul>
         </section>
     );

@@ -33,14 +33,20 @@ function App() {
   const [el, setEl] = useState(null)
 
 
+  function showGameInfo(){
+    setEl({title: 'Présentation du jeu', desc:`Essayez d'ajouter du CO2 en cliquant sur l'icone et regardez l'océan se dégrader. Le pronostic vital sera vite engagé.
+        
+      Essayez de monter jusqu'à 100 pour
+      débloquer le 1e effet indésirable
+      `})
+          window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
+  }
+
   useEffect(() => {
     if (localStorage.getItem('count') === null){
-      setEl({title: 'Présentation du jeu', desc:`Essayez d\'ajouter du CO2 en cliquant sur l'icone et regardez l\'océan se dégrader. Le pronostic vital sera vite engagé.
-        
-**Essayez de monter jusqu'à 100 pour débloquer le 1e effet indésirable**`})
+      showGameInfo();
+      setCount(window.clickCount);
     }
-    window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
-    setCount(window.clickCount)
   }, [])
 
   function addClick(){
@@ -62,7 +68,7 @@ function App() {
         <Count count={count} />
         <Clicker onClick={addClick}/>
         </section>
-        <ShopSection count={count} setCount={effectiveSetCount} showPopup={(el) => setEl(el)}/>
+        <ShopSection count={count} setCount={effectiveSetCount} showPopup={(el) => setEl(el)}  showMyInfo={showGameInfo}/>
       </main>
       <InfoModal el={el} onClose={() => setEl(null)} />
     </>

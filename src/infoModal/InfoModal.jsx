@@ -17,7 +17,7 @@ export const InfoModal = ({ el, onClose }) => {
                 <h2>{title}</h2>
                 { icon ? <div className='infoModalSection'>
                     <img className='infoModalImg' src={icon} alt={`Icon ${title}`} />
-                </div> : ''}
+                </div> : <p><a href="https://kdrive.infomaniak.com/app/share/771413/91bc4eeb-90f1-411f-92ce-69e27969c910" target='_blank'>Voir les podcasts</a></p>}
                 <Markdown>{desc}</Markdown>
             </div>
         </div>
