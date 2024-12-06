@@ -1,4 +1,5 @@
 export function formatBigInt(bigIntValue) {
+    if (!bigIntValue) return "0";
     let strValue = bigIntValue.toString();
   
     if (bigIntValue >= BigInt(1e9)) {
