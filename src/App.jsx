@@ -29,6 +29,11 @@ function App() {
     setCount(window.clickCount);
   }
 
+  function effectiveSetCount(cnt){
+    window.clickCount = cnt;
+    setCount(window.clickCount);
+  }
+
 
   return (
     <>
@@ -38,7 +43,7 @@ function App() {
         <Count count={count} />
         <Clicker onClick={addClick}/>
         </section>
-        <ShopSection />
+        <ShopSection count={count} setCount={effectiveSetCount}/>
       </main>
     </>
   )

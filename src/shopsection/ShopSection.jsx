@@ -1,28 +1,56 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SHOPDATA from '../data/shop';
 import co2CloudImage from '../assets/co2-cloud.png';
 
 import './ShopSection.css';
+import { formatBigInt, formatNumber } from '../utils/format';
 
-export const ShopSection = ({count, buyI}) => {
-    const [pollutions, setPollutions] = useState(Object.fromEntries(
+export const ShopSection = ({count, setCount}) => {
+    const [pollutions, setPollutions] = useState(JSON.parse(localStorage.getItem("pollution")) || Object.fromEntries(
         Object.entries(SHOPDATA).map(([k,v]) => ([k, {cps: v.co2PerSecond, unit: 0}]))
-    ))
+    ));
 
-    function buyElement([key, el]){
+    window.addEach = Object.values(pollutions).map(({cps, unit}) => cps * unit).reduce((accumulator, currentValue) => {
+        return accumulator + currentValue;
+      }, 0);
+    window.addFun = function(cnt){
+        console.debug("add ", cnt)
+        setCount(window.clickCount + BigInt(cnt));
+    }
+
+    window.pollutions = pollutions;
+
+    function buyElement([key, el], price){
+        if (count < price) return;
+        const newCount = count - BigInt(price);
+        setCount(newCount);
         el.unit += 1;
-        setPollutions({...pollutions, [key]: el});
+        const newPollution = {...pollutions, [key]: el};
+        setPollutions(newPollution);
+        localStorage.setItem("pollution", JSON.stringify(newPollution));
+        localStorage.setItem("count", newCount);
     }
 
     return (
         <section className='shopSection'>
             <ul>
-            {Object.entries(SHOPDATA).map(([k, { icon, co2PerSecond, title }]) => (
-                <li key={k} className='shopFlex shopWrap'>
+            {Object.entries(SHOPDATA).map(([k, { icon, co2PerSecond, title, basePrice }]) => {
+                const pollution = pollutions[k];
+                console.debug("price", basePrice, "unit", pollution.unit);
+                const adjustedPrice = BigInt(Math.ceil(basePrice * (1 + (pollution.unit / 10))));
+                const buyable = count >= adjustedPrice;
+                if (!buyable && !pollution.unit){
+                    return null
+                }
+                return (
+                <li key={k} className={`shopFlex shopWrap${(!buyable) ?' shopDis':''}`}>
                     <div className='shopFlex' >
-                        <img className='keyIcon' src={icon} alt={`Icon ${k}`} />
-                        <button onClick={() => buyElement([k, pollutions[k]])}>+<span className='shopTag'>
-                            <span style={{margin: '0.1em'}}>10k</span>
+                        <div className='nextFlex'>
+                            <span className='shopUnit'>{ pollution.unit }</span>
+                            <img className='keyIcon' src={icon} alt={`Icon ${k}`} />
+                        </div>
+                        <button onClick={() => buyElement([k, pollution], adjustedPrice)}>+<span className='shopTag'>
+                            <span style={{margin: '0.1em'}}>{formatBigInt(adjustedPrice)}</span>
                             <img
                             className='co2'
                             src={co2CloudImage}
@@ -32,10 +60,11 @@ export const ShopSection = ({count, buyI}) => {
                     </div>
                     <div className='shopFlex' >
                         <span>{title}</span>
-                        <span>{co2PerSecond} Co² / s</span>
+                        <span>{formatNumber(co2PerSecond)} Co²/s</span>
                     </div>
                 </li>
-            ))}
+            );
+        })}
             </ul>
         </section>
     );

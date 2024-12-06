@@ -1,10 +1,37 @@
-.shopSection table{
-    width: 100%;
-}
+.shopSection{
+    height: 50vh;
+    font-size: min(5vw, 20px);
+    overflow-y: auto;
+    border-top: solid 0.1em var(--blue);
+    padding-top: 0.5em;
+    padding-top: 1em;
+  }
+  
+  .shopSection ul{
+    width: calc(100% - 1em);
+    padding: 0.5em;
+  }
+  
+  
+  .shopSection button{
+    background: var(--blue);
+    color: white;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+  }
+  
+  .shopSection button:not(:active){
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .shopSection button:active{
+    transform: scale(0.9);
+  }
 
 .shopSection li{
     background-color: var(--blue);
     padding: 0.5em;
+    margin-top: 0.5em;
     list-style: none;
     width: calc(100% - 1em) !important;
 }
@@ -16,10 +43,25 @@
     flex-direction: row;
     width: 100%;
 }
+@media (min-width: 720px) {
+    .shopSection .shopFlex {
+        width: 40%;
+        flex-direction: row-reverse;
+    }
+}
+
+.nextFlex{
+    display: flex;
+    align-items: center;
+}
 
 
 .shopSection img.keyIcon{
     height: 3em;
+    margin-left: 1em;
+}
+.shopUnit{
+    font-size: 2em;
 }
 
 .shopSection img.co2{
@@ -54,4 +96,8 @@
     color: var(--blue);
     border: solid 1px var(--blue);
     border-radius: 0.5em;
+}
+
+.shopDis {
+    opacity: 0.5;
 }
