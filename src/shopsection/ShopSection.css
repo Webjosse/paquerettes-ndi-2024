@@ -43,6 +43,7 @@
     flex-direction: row;
     width: 100%;
 }
+
 @media (min-width: 720px) {
     .shopSection .shopFlex {
         width: 40%;
