@@ -33,6 +33,7 @@ export const ShopSection = ({count, setCount, showPopup}) => {
         localStorage.setItem("pollution", JSON.stringify(newPollution));
         localStorage.setItem("count", newCount);
     }
+    const allUnlocked = pollutions["coralbleaching"].unit > 0 || count >= 9_000_000;
 
     return (
         <section className='shopSection'>
@@ -69,6 +70,9 @@ export const ShopSection = ({count, setCount, showPopup}) => {
                 </li>
             );
         })}
+        {allUnlocked ? '' : <li className='shopFlex shopWrap shopDis'>
+                <p>*Générez du CO2 pour débloquer cet élément</p>
+            </li>}
             </ul>
         </section>
     );
