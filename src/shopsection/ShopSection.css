@@ -44,7 +44,7 @@
     width: 100%;
 }
 
-@media (min-width: 720px) {
+@media (min-aspect-ratio: 1/1) {
     .shopSection .shopFlex {
         width: 40%;
         flex-direction: row-reverse;
