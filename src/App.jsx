@@ -57,7 +57,7 @@ function App() {
   }
 
   function effectiveSetCount(cnt){
-    window.clickCount = cnt;
+    window.clickCount = BigInt(cnt.toString());
     setCount(window.clickCount);
   }
 
