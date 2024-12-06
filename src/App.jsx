@@ -40,8 +40,7 @@ function App() {
       débloquer le 1e effet indésirable
 
       (Icones par Freepik)
-      `})
-          window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
+      `});
   }
 
   useEffect(() => {
@@ -49,6 +48,8 @@ function App() {
       showGameInfo();
       setCount(window.clickCount);
     }
+    window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
+    console.log(window.clickCount);
   }, [])
 
   function addClick(){
