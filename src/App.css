@@ -24,11 +24,10 @@ body{
 .clicker-image {
 }
 
-.clicker-image:active {
+.clicker-image.clicked-clicker {
   transform: scale(0.9) rotate(10deg);
 }
-.clicker-image:not(:active){
-  
+.clicker-image:not(.clicked-clicker){
   transition: transform 0.1s ease-in-out;
 }
 
