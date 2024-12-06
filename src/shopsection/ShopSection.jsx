@@ -5,7 +5,7 @@ import co2CloudImage from '../assets/co2-cloud.png';
 import './ShopSection.css';
 import { formatBigInt, formatNumber } from '../utils/format';
 
-export const ShopSection = ({count, setCount}) => {
+export const ShopSection = ({count, setCount, showPopup}) => {
     const [pollutions, setPollutions] = useState(JSON.parse(localStorage.getItem("pollution")) || Object.fromEntries(
         Object.entries(SHOPDATA).map(([k,v]) => ([k, {cps: v.co2PerSecond, unit: 0}]))
     ));
@@ -22,6 +22,9 @@ export const ShopSection = ({count, setCount}) => {
 
     function buyElement([key, el], price){
         if (count < price) return;
+        if (el.unit == 0){
+            showPopup(SHOPDATA[key])
+        }
         const newCount = count - BigInt(price);
         setCount(newCount);
         el.unit += 1;

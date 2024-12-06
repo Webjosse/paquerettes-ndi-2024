@@ -4,6 +4,7 @@ import {Clicker} from './clicker/Clicker';
 import {ShopSection} from './shopsection/ShopSection';
 import {Count} from './clicker/Count';
 import { Background } from './background/Background';
+import { InfoModal } from './infoModal/InfoModal';
 
 // No zoom on double click for smartphones
 document.addEventListener('dblclick', function(event) {
@@ -28,7 +29,10 @@ function safeBigInt(s) {
 
 function App() {
   const [count, setCount] = useState(BigInt("0"))
-  
+
+  const [el, setEl] = useState(null)
+
+
   useEffect(() => {
     window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
     setCount(window.clickCount)
@@ -53,8 +57,9 @@ function App() {
         <Count count={count} />
         <Clicker onClick={addClick}/>
         </section>
-        <ShopSection count={count} setCount={effectiveSetCount}/>
+        <ShopSection count={count} setCount={effectiveSetCount} showPopup={(el) => setEl(el)}/>
       </main>
+      <InfoModal el={el} onClose={() => setEl(null)} />
     </>
   )
 }

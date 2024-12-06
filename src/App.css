@@ -51,7 +51,7 @@ body{
   color: var(--blue)
 }
 
-.clickSection, .shopSection{
+.clickSection, .shopSection, .infoModalSection{
   display: flex;
   align-items: center;
   flex-direction: column;
