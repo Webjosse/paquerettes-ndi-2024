@@ -38,6 +38,8 @@ function App() {
         
       Essayez de monter jusqu'à 100 pour
       débloquer le 1e effet indésirable
+
+      (Icones par Freepik)
       `})
           window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
   }
