@@ -12,7 +12,7 @@ setInterval(() => {
 
 setInterval(() => {
   if (window.clickCount){
-    localStorage.setItem("count", window.clickCount?.toString() || "1000");
+    localStorage.setItem("count", window.clickCount?.toString() || "0");
   } 
 }, 5000);
 

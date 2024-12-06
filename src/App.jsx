@@ -5,6 +5,16 @@ import {ShopSection} from './shopsection/ShopSection';
 import {Count} from './clicker/Count';
 import { Background } from './background/Background';
 
+// No zoom on double click for smartphones
+document.addEventListener('dblclick', function(event) {
+  event.preventDefault();
+});
+
+document.addEventListener('gesturestart', function(event) {
+  event.preventDefault();
+});
+
+
 function safeBigInt(s) {
   // Utiliser une expression régulière pour vérifier si la chaîne est un nombre valide
   const isValidNumber = /^-?\d+$/.test(s);
@@ -12,7 +22,7 @@ function safeBigInt(s) {
   if (isValidNumber) {
       return BigInt(s);
   } else {
-      return BigInt("1000");
+      return BigInt("0");
   }
 }
 
