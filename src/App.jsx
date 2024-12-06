@@ -27,10 +27,10 @@ function safeBigInt(s) {
 }
 
 function App() {
-  const [count, setCount] = useState(BigInt("1000"))
+  const [count, setCount] = useState(BigInt("0"))
   
   useEffect(() => {
-    window.clickCount = safeBigInt(localStorage.getItem('count')|| '1000');
+    window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
     setCount(window.clickCount)
   }, [])
 
