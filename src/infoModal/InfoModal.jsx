@@ -1,3 +1,4 @@
+import Markdown from 'react-markdown';
 import './InfoModal.css';
 
 export const InfoModal = ({ el, onClose }) => {
@@ -14,10 +15,10 @@ export const InfoModal = ({ el, onClose }) => {
                     &times;
                 </button>
                 <h2>{title}</h2>
-                <div className='infoModalSection'>
+                { icon ? <div className='infoModalSection'>
                     <img className='infoModalImg' src={icon} alt={`Icon ${title}`} />
-                </div>
-                <p>{desc}</p>
+                </div> : ''}
+                <Markdown>{desc}</Markdown>
             </div>
         </div>
     );

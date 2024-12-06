@@ -45,10 +45,11 @@ export const ShopSection = ({count, setCount, showPopup}) => {
                 if (!buyable && !pollution.unit){
                     return null
                 }
+                console.log(pollution);
                 return (
                 <li key={k} className={`shopFlex shopWrap${(!buyable) ?' shopDis':''}`}>
                     <div className='shopFlex' >
-                        <div className='nextFlex'>
+                        <div className='nextFlex' style={{cursor:'pointer'}} onClick={() => showPopup(SHOPDATA[k])}>
                             <span className='shopUnit'>{ pollution.unit }</span>
                             <img className='keyIcon' src={icon} alt={`Icon ${k}`} />
                         </div>

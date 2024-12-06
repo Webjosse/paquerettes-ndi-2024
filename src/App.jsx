@@ -34,6 +34,11 @@ function App() {
 
 
   useEffect(() => {
+    if (localStorage.getItem('count') === null){
+      setEl({title: 'Présentation du jeu', desc:`Essayez d\'ajouter du CO2 en cliquant sur l'icone et regardez l\'océan se dégrader. Le pronostic vital sera vite engagé.
+        
+**Essayez de monter jusqu'à 100 pour débloquer le 1e effet indésirable**`})
+    }
     window.clickCount = safeBigInt(localStorage.getItem('count')|| '0');
     setCount(window.clickCount)
   }, [])
